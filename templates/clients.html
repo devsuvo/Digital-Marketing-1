@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Clients | SD{% endblock %}
+{% block content %}
+{% with eyebrow="Clients", heading="In good <span class='accent'>company</span>.", sub="From seed-stage startups to global enterprises, these are some of the teams we've worked with.", hero_img=unsplash('1522071820081-009f0129c71c',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container client-grid">
+    {% for c in clients %}<div class="client-logo reveal"><span class="display">{{ c }}</span></div>{% endfor %}
+  </div>
+</section>
+{% include "_testimonials.html" %}
+{% endblock %}

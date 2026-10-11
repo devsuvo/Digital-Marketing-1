@@ -1,0 +1,25 @@
+<section class="section testimonials">
+  <div class="container">
+    <div class="t-head">
+      <span class="eyebrow">Testimonials</span>
+      <h2 class="display h-lg">What Our <span class="accent">Clients</span> Say</h2>
+    </div>
+    <div class="slider" id="slider">
+      <span class="quote-mark display" aria-hidden="true">“</span>
+      {% for quote, name, role, img in testimonials %}
+      <div class="slide{% if loop.first %} active{% endif %}">
+        <p class="quote">{{ quote }}</p>
+        <div class="author">
+          <img src="{{ img }}" alt="{{ name }}">
+          <div><strong>{{ name }}</strong><span class="muted">{{ role }}</span></div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="slider-nav">
+        <button class="nav-btn" data-dir="-1" aria-label="Previous">←</button>
+        <div class="slider-dots">{% for t in testimonials %}<button data-i="{{ loop.index0 }}" class="{% if loop.first %}active{% endif %}" aria-label="Slide {{ loop.index }}"></button>{% endfor %}</div>
+        <button class="nav-btn" data-dir="1" aria-label="Next">→</button>
+      </div>
+    </div>
+  </div>
+</section>

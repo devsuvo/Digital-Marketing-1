@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }} | SD{% endblock %}
+{% block content %}
+{% with eyebrow="Expertise", heading=item.title, sub=item.short, hero_img=item.hero %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    <h2 class="display h-lg reveal">{{ item.headline }}</h2>
+    <div class="stats-grid stats-inline">
+      {% for num, label in item.stats %}
+      <div class="stat-box reveal"><span class="display stat-num">{{ num }}</span><h3 class="stat-label">{{ label }}</h3></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="display h-lg">How we <span class="accent">help</span></h2>
+    <div class="card-grid">
+      {% for t, d in item.points %}
+      <div class="card reveal"><span class="menu-num">{{ '%02d' % loop.index }}</span><h3 class="display h-sm">{{ t }}</h3><p class="muted">{{ d }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head"><h2 class="display h-lg">Featured <span class="accent">Work</span></h2><a class="link-arrow" href="{{ url_for('case_studies') }}">All case studies →</a></div>
+    <div class="case-grid">
+      {% for name, cat, desc, img in cases %}{% include "_case.html" %}{% endfor %}
+    </div>
+    <div class="pill-row">
+      {% for s, e in expertise_all.items() if s != slug %}<a class="pill" href="{{ url_for('expertise_detail', slug=s) }}">{{ e.title }}</a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

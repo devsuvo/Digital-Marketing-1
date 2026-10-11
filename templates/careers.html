@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Careers | SD{% endblock %}
+{% block content %}
+{% with eyebrow="Careers", heading="Do the best work of your <span class='accent'>career</span>.", sub="We're always looking for curious, driven people who love technology and storytelling.", hero_img=unsplash('1521737604893-d14cc237f11d',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    <h2 class="display h-lg">Why <span class="accent">SD</span></h2>
+    <div class="card-grid">
+      <div class="card reveal"><h3 class="display h-sm">Remote-friendly</h3><p class="muted">Work from our offices or wherever you do your best thinking.</p></div>
+      <div class="card reveal"><h3 class="display h-sm">Growth</h3><p class="muted">Mentorship, training budgets and a clear path to leadership.</p></div>
+      <div class="card reveal"><h3 class="display h-sm">Impact</h3><p class="muted">Work on the technologies that are reshaping the world.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="display h-lg">Open <span class="accent">Positions</span></h2>
+    <div class="jobs">
+      {% for t, loc, typ in jobs %}
+      <a href="{{ url_for('lets_talk') }}" class="job reveal">
+        <h3 class="display h-sm">{{ t }}</h3><span class="muted">{{ loc }}</span><span class="tag">{{ typ }}</span><span class="link-arrow">Apply →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include "_testimonials.html" %}
+{% endblock %}

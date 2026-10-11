@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Let's Talk | SD{% include "_faq.html" %}
+{% endblock %}
+{% block content %}
+{% with eyebrow="Contact", heading="Let's <span class='accent'>Talk</span>", sub="Tell us about your company and goals. We usually reply within one business day.", hero_img=unsplash('1517245386807-bb43f82c33c4',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container split">
+    <div class="contact-info">
+      <h2 class="display h-md">San Francisco</h2><p class="muted">100 Market St, Suite 200<br>San Francisco, California</p>
+      <h2 class="display h-md">Email</h2><p class="muted">hello@sd-agency.example</p>
+      <h2 class="display h-md">New Business</h2><p class="muted">newbiz@sd-agency.example</p>
+      <h2 class="display h-md">Careers</h2><p class="muted">jobs@sd-agency.example</p>
+    </div>
+    <form method="post" class="form">
+      {% with msgs = get_flashed_messages(with_categories=true) %}{% for cat, m in msgs %}<div class="alert {{ cat }}">{{ m }}</div>{% endfor %}{% endwith %}
+      <div class="form-row"><input name="name" placeholder="Name *" required><input name="email" type="email" placeholder="Email *" required></div>
+      <div class="form-row"><input name="company" placeholder="Company"><input name="phone" placeholder="Phone"></div>
+      <select name="interest">
+        <option value="">What are you interested in?</option>
+        <option>Public &amp; Media Relations</option><option>Content</option><option>Creative</option>
+        <option>Website Development</option><option>Social &amp; Community</option><option>Paid Media</option>
+      </select>
+      <textarea name="message" rows="6" placeholder="Tell us about your project"></textarea>
+      <button class="btn btn-accent btn-lg btn-arrow" type="submit"><span>Send Message</span><i>→</i></button>
+    </form>
+  </div>
+</section>
+{% include "_faq.html" %}
+{% endblock %}

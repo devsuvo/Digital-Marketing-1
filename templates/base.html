@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}SD | Tech PR & Marketing Agency{% endblock %}</title>
+  <meta name="description" content="SD is a results-driven tech PR and marketing agency for AI, enterprise, fintech and emerging tech brands.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%23f4bd03'/><text x='50' y='66' font-family='Arial Black' font-size='44' text-anchor='middle' fill='black'>SD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="preloader" id="preloader">
+    <div class="pre-logo display">SD<span>.</span></div>
+    <div class="pre-bar"><i></i></div>
+  </div>
+  <div class="progress" id="progress"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor"><span></span></div>
+
+  <header class="topbar">
+    <a href="{{ url_for('home') }}" class="logo">SD<span>.</span></a>
+    <div class="topbar-right">
+      <a href="{{ url_for('lets_talk') }}" class="btn btn-outline btn-arrow magnetic hide-mobile"><span>Let's Talk</span><i>→</i></a>
+      <button class="menu-btn magnetic" aria-label="Open menu" id="menuBtn"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menu">
+    <div class="menu-inner">
+      <div class="menu-cols">
+        <nav class="menu-list">
+          {% for label, ep in nav %}
+          <a href="{{ url_for(ep) }}" class="menu-item{% if request.endpoint == ep %} current{% endif %}">
+            <span class="menu-num">{{ '%02d' % loop.index }}</span>
+            <span class="menu-label">{{ label }}</span>
+          </a>
+          {% endfor %}
+        </nav>
+        <aside class="menu-side">
+          <img src="{{ unsplash('1497366216548-37526070297c', 900) }}" alt="">
+          <p class="muted">Have a project in mind?</p>
+          <a href="mailto:hello@sd-agency.example" class="menu-mail">hello@sd-agency.example</a>
+        </aside>
+      </div>
+      <div class="menu-foot">
+        <span>©COPYRIGHT 2026 - SD</span>
+        <div class="socials">
+          <a href="#">LinkedIn</a><a href="#">X</a><a href="#">Instagram</a><a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">{% block content %}{% endblock %}</main>
+
+  {% block cta %}
+  <section class="cta">
+    <div class="cta-glow"></div>
+    <div class="container cta-inner">
+      <div>
+        <span class="eyebrow">Start a project</span>
+        <h2 class="display cta-title reveal">Ready to<br><span class="accent">Partner?</span></h2>
+      </div>
+      <a href="{{ url_for('lets_talk') }}" class="cta-circle magnetic"><span>Let's<br>Talk</span><i>↗</i></a>
+    </div>
+  </section>
+  {% endblock %}
+
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-news">
+        <h3 class="display h-md">Stay in the <span class="accent">loop</span></h3>
+        <p class="muted">Monthly ideas on tech, media and storytelling. No spam.</p>
+        <form class="newsletter" onsubmit="event.preventDefault(); this.classList.add('done'); this.querySelector('input').value='';">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" aria-label="Subscribe">→</button>
+          <span class="nl-ok">Thanks for subscribing!</span>
+        </form>
+      </div>
+      <div class="footer-grid">
+        <div>
+          <h4>Agency</h4>
+          <a href="{{ url_for('home') }}">Home</a>
+          {% for label, ep in nav %}<a href="{{ url_for(ep) }}">{{ label }}</a>{% endfor %}
+        </div>
+        <div>
+          <h4>Expertise</h4>
+          {% for slug, e in expertise_all.items() %}<a href="{{ url_for('expertise_detail', slug=slug) }}">{{ e.title }}</a>{% endfor %}
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="muted small">100 Market St, Suite 200<br>San Francisco, California</p>
+          <a href="mailto:hello@sd-agency.example">hello@sd-agency.example</a>
+          <div class="social-icons">
+            <a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">X</a><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="YouTube">yt</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-word display" aria-hidden="true">SD<span>.</span></div>
+    <div class="container footer-bottom">
+      <span>©COPYRIGHT 2026 - SD. All rights reserved.</span>
+      <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+      <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+    </div>
+  </footer>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

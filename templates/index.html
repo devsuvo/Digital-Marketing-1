@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-bg-img" style="background-image:url('{{ unsplash('1451187580459-43490279c0fa', 1920) }}')"></div>
+  <div class="hero-shade"></div>
+  <div class="container hero-content">
+    <div class="hero-badge reveal"><span class="pulse"></span> Now booking Q1 2027 launches</div>
+    <h2 class="hero-sub"><span class="split-line"><span>Shaping the narrative of innovation.</span></span></h2>
+    <h1 class="display hero-title">
+      <span class="split-line"><span>Results driven</span></span>
+      <span class="split-line"><span>Tech PR <em class="accent">&amp;</em> Marketing</span></span>
+    </h1>
+    <div class="hero-actions reveal">
+      <a href="{{ url_for('lets_talk') }}" class="btn btn-accent btn-lg btn-arrow magnetic"><span>Let's Talk</span><i>→</i></a>
+      <a href="{{ url_for('case_studies') }}" class="btn-text">See our work <i>↗</i></a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="container hero-bottom-inner">
+      <span class="muted small">Trusted by fast-growing tech brands</span>
+      <div class="logo-strip"><div class="logo-track">
+        {% for i in range(2) %}{% for c in clients[:10] %}<span class="display">{{ c }}</span>{% endfor %}{% endfor %}
+      </div></div>
+      <a href="#news" class="scroll-ind" aria-label="Scroll down"><span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Latest</span><h2 class="display h-lg">Trending <span class="accent">News</span></h2></div>
+      <a href="{{ url_for('trending_news') }}" class="btn btn-outline btn-arrow"><span>View all news</span><i>→</i></a>
+    </div>
+    <div class="news-grid">
+      {% for n in news %}{% include "_news_card.html" %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Expertise</span>
+      <p class="lead reveal">We've been building <span class="accent">tech brand leaders</span> with PR and integrated marketing since the early days of the web.</p></div>
+    </div>
+    <div class="expertise-grid">
+      {% for slug, e in expertise_all.items() %}
+      <a href="{{ url_for('expertise_detail', slug=slug) }}" class="exp-card reveal" style="--d:{{ (loop.index0 % 3) * 0.1 }}s">
+        <div class="exp-img" style="background-image:url('{{ e.hero }}')"></div>
+        <div class="exp-shade"></div>
+        <span class="exp-num">{{ '%02d' % loop.index }}</span>
+        <span class="arrow-circle exp-arrow">↗</span>
+        <div class="exp-body">
+          <h3 class="display h-sm">{{ e.title }}</h3>
+          <p>{{ e.short }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat reveal"><span class="display stat-num" data-count="25">0</span><span class="stat-label">Years of<br>experience</span></div>
+    <div class="stat reveal"><span class="display stat-num" data-count="500">0</span><span class="stat-label">Featured<br>projects</span></div>
+    <div class="stat reveal"><span class="display stat-num" data-count="300">0</span><span class="stat-label">Brands<br>launched</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Capabilities</span>
+      <h2 class="display h-lg reveal">Transformative brands need <span class="accent">transformative</span> stories.</h2>
+      <ul class="check-list">
+        {% for t, d, img in capabilities %}<li class="reveal" style="--d:{{ loop.index0 * 0.06 }}s">{{ t }}</li>{% endfor %}
+      </ul>
+      <a href="{{ url_for('capabilities') }}" class="btn btn-outline btn-arrow"><span>View Our Capabilities</span><i>→</i></a>
+    </div>
+    <div class="img-stack reveal">
+      <div class="img-frame"><img class="parallax" data-speed="0.08" src="{{ unsplash('1556761175-5973dc0f32e7', 1000) }}" alt="Team collaborating"></div>
+      <div class="float-card">
+        <span class="display accent">98%</span>
+        <span class="small">Client retention rate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="marquee-wrap">
+  <div class="marquee"><div class="marquee-track">
+    {% for i in range(2) %}<span>Public &amp; Media Relations <b>✦</b> Content <b>✦</b> Creative <b>✦</b> Custom Website Development <b>✦</b> Social <b>✦</b> Community <b>✦</b> Paid Media <b>✦</b> </span>{% endfor %}
+  </div></div>
+  <div class="marquee marquee-reverse"><div class="marquee-track">
+    {% for i in range(2) %}<span class="outline">Strategy ✦ Storytelling ✦ Thought Leadership ✦ Launches ✦ Analyst Relations ✦ Crisis ✦ </span>{% endfor %}
+  </div></div>
+</section>
+
+{% include "_process.html" %}
+{% include "_testimonials.html" %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Our Work | SD{% endblock %}
+{% block content %}
+{% with eyebrow="Our Work", heading="Stories that <span class='accent'>moved</span> markets.", sub="A selection of campaigns, launches and long-term programs.", hero_img=unsplash('1504384308090-c894fdcc538d',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    <div class="filter-row" id="filters">
+      <button class="pill active" data-f="all">All</button>
+      {% for c in cases|map(attribute=1)|unique %}<button class="pill" data-f="{{ c }}">{{ c }}</button>{% endfor %}
+    </div>
+    <div class="case-grid">
+      {% for name, cat, desc, img in cases %}<div class="filter-item" data-cat="{{ cat }}">{% include "_case.html" %}</div>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | SD{% endblock %}
+{% block content %}
+{% with eyebrow="Newsroom", heading=title, sub=subtitle, hero_img=unsplash('1504711434969-e33886168f5c',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    <div class="news-grid">
+      {% for n in news %}{% include "_news_card.html" %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

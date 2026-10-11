@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Capabilities | SD{% include "_process.html" %}
+{% include "_faq.html" %}
+{% endblock %}
+{% block content %}
+{% with eyebrow="Capabilities", heading="Transformative brands need <span class='accent'>transformative</span> stories.", sub="An integrated team for earned, owned, shared and paid media.", hero_img=unsplash('1542744173-8e7e53415bb0',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container sticky-stack">
+    {% for t, d, img in capabilities %}
+    <div class="sticky-card" style="top:{{ 90 + loop.index0*20 }}px">
+      <div class="sticky-text">
+        <span class="menu-num">{{ '%02d' % loop.index }}</span>
+        <h2 class="display heading-large">{{ t }}</h2>
+        <p class="lead-sm">{{ d }}</p>
+      </div>
+      <img src="{{ img }}" alt="{{ t }}">
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% include "_process.html" %}
+{% include "_faq.html" %}
+{% endblock %}

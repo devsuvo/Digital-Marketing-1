@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}About | SD{% endblock %}
+{% block content %}
+{% with eyebrow="About SD", heading="We're storytellers for the <span class='accent'>builders</span> of tomorrow.", hero_img=unsplash('1497366216548-37526070297c',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container split">
+    <div>
+      <h2 class="display h-lg reveal">Built on curiosity.<br>Driven by <span class="accent">results</span>.</h2>
+      <p class="lead-sm">SD is an independent tech PR and marketing agency. We help ambitious companies explain what they do, why it matters and why now.</p>
+      <p class="muted">Our teams combine media relations, content, creative, web and social, so every story gets told consistently wherever your audience is paying attention.</p>
+    </div>
+    <img class="split-img reveal" src="{{ unsplash('1600880292203-757bb62b4baf', 1000) }}" alt="SD team">
+  </div>
+</section>
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="display h-lg center">Our <span class="accent">Values</span></h2>
+    <div class="card-grid">
+      <div class="card reveal"><span class="menu-num">01</span><h3 class="display h-sm">Curiosity</h3><p class="muted">We learn your technology inside out before we write a word.</p></div>
+      <div class="card reveal"><span class="menu-num">02</span><h3 class="display h-sm">Candor</h3><p class="muted">Honest advice even when it isn't what you want to hear.</p></div>
+      <div class="card reveal"><span class="menu-num">03</span><h3 class="display h-sm">Craft</h3><p class="muted">Every pitch, post and page gets the same level of care.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2 class="display h-lg center">Leadership</h2>
+    <div class="team-grid">
+      {% for n, r, img in team %}
+      <div class="team-card reveal"><img src="{{ img }}" alt="{{ n }}"><h3 class="display h-sm">{{ n }}</h3><p class="muted">{{ r }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

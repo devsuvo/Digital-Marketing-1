@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Expertise | SD{% endblock %}
+{% block content %}
+{% with eyebrow="Expertise", heading="Deep sector knowledge.<br><span class='accent'>Sharp</span> stories.", sub="Six practices with one job: making the companies that shape the future impossible to ignore.", hero_img=unsplash('1531297484001-80022131f5a1',1800) %}{% include "_page_hero.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    {% for slug, e in expertise_all.items() %}
+    <a href="{{ url_for('expertise_detail', slug=slug) }}" class="row-card reveal">
+      <span class="menu-num">{{ '%02d' % loop.index }}</span>
+      <div class="row-text"><h2 class="display h-md">{{ e.title }}</h2><p class="muted">{{ e.short }}</p></div>
+      <img src="{{ e.hero }}" alt="{{ e.title }}">
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

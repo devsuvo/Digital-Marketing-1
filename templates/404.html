@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Page not found | SD{% endblock %}
+{% block content %}
+{% with heading="4<span class='accent'>0</span>4", sub="The page you're looking for doesn't exist." %}{% include "_page_hero.html" %}{% endwith %}
+<div class="container center" style="padding-bottom:80px"><a class="btn btn-accent" href="{{ url_for('home') }}">Back home</a></div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="container faq-wrap">
+    <div>
+      <span class="eyebrow">FAQ</span>
+      <h2 class="display h-lg">Questions,<br><span class="accent">answered.</span></h2>
+      <p class="muted">Don't see your question? <a class="link-u" href="{{ url_for('lets_talk') }}">Get in touch</a>.</p>
+    </div>
+    <div class="faq">
+      {% for q, a in faqs %}
+      <details class="faq-item reveal"{% if loop.first %} open{% endif %}>
+        <summary><span>{{ q }}</span><i class="plus"></i></summary>
+        <p class="muted">{{ a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

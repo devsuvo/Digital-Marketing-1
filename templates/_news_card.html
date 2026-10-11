@@ -1,0 +1,8 @@
+<a href="{{ url_for('news') }}" class="news-card reveal">
+  <div class="news-img-wrap"><div class="news-img" style="background-image:url('{{ n.img }}')"></div><span class="tag tag-float">{{ n.cat }}</span></div>
+  <div class="news-body">
+    <div class="news-meta"><span>{{ n.date }}</span><span class="dot"></span><span>{{ n.read }}</span></div>
+    <p class="news-title">{{ n.title }}</p>
+    <div class="news-foot"><span class="news-outlet">{{ n.outlet }}</span><span class="arrow-circle">↗</span></div>
+  </div>
+</a>

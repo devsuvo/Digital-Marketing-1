@@ -1,0 +1,17 @@
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">How we work</span><h2 class="display h-lg">Our <span class="accent">Process</span></h2></div>
+      <p class="muted head-note">A simple, proven framework that turns complex technology into stories that win attention.</p>
+    </div>
+    <div class="process">
+      {% for t, d in process %}
+      <div class="process-step reveal" style="--d:{{ loop.index0 * 0.1 }}s">
+        <span class="process-num display">{{ '%02d' % loop.index }}</span>
+        <h3 class="display h-sm">{{ t }}</h3>
+        <p class="muted">{{ d }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
